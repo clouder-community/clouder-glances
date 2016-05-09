@@ -11,7 +11,7 @@ ADD sources/check_mem.pl /usr/lib/nagios/plugins/check_mem.pl
 RUN chmod +x /usr/lib/nagios/plugins/check_mem.pl
 
 USER root
-RUN sed -i "s/allowed_hosts=127.0.0.1/allowed_hosts=172.17.0.0\\\/16/g" /etc/nagios/nrpe.cfg
+RUN sed -i "s/allowed_hosts=127.0.0.1/allowed_hosts=172.17.0.0\/16/g" /etc/nagios/nrpe.cfg
 RUN echo "command[check_mem]=/usr/lib/nagios/plugins/check_mem.pl -fC -w 20 -c 10" >> /etc/nagios/nrpe.cfg
 RUN echo "command[check_disk]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /" >> /etc/nagios/nrpe.cfg
 
