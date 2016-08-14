@@ -1,8 +1,9 @@
 FROM clouder/clouder-base
 MAINTAINER Yannick Buron yburon@goclouder.net
 
-RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -q install supervisor python-pip python-dev nagios-nrpe-server htop hddtemp
+RUN apt-get -qq update && DEBIAN_FRONTEND=noninteractive apt-get -y -q install supervisor python-pip python-dev nagios-nrpe-server htop hddtemp lm-sensors
 
+RUN pip install --upgrade pip setuptools
 RUN pip install bottle pysensors batinfo pymdstat pysnmp zeroconf netifaces influxdb statsd pystache docker-py pika py-cpuinfo
 
 RUN pip install glances
